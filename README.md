@@ -5,7 +5,7 @@ Complete reference mobile application for the Enterprise Mobile Patterns on Sale
 
 The app demonstrates typical use case of a consumer facing mobile app connected to cloud-based business and mobile backend, with employees.using secure enterprise mobile apps.
 
-[overview.png]
+(https://github.com/quintonwall/Enterprise-Mobile-Patterns/blob/master/overview.png)
 
 The code is divided into 3 projects that map to these apps with core context (identity, business logic and data) common to all (per the mobile platform pattern)
 
