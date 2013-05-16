@@ -1,7 +1,7 @@
 Enterprise-Mobile-Patterns
 ==========================
 
-Complete reference mobile application for the Enterprise Mobile Patterns on Salesforce Platform.
+Complete reference mobile application for the Enterprise Mobile Patterns on Salesforce Platform. 
 
 The app demonstrates typical use case of a consumer facing mobile app connected to cloud-based business and mobile backend, with employees.using secure enterprise mobile apps.
 
@@ -20,3 +20,6 @@ The Salesforce Platform provides a comprehensive mobile backend as a service (mB
 **Employee**
 
 Employee facing mobile app using the developer mobile packs and the Mobile SDK to develop a hybrid application (based on Phonegap Cordova) for iOS. 
+
+
+Please refer to the [Enterprise Mobile Patterns](http://wiki.developerforce.com/page/EnterpriseMobilePatterns) article for more information.
