@@ -1,7 +1,7 @@
 ﻿
 // OAuth Configuration
 var loginUrl = 'https://cloudcable.secure.force.com/';
-var clientId = '3MVG9A2kN3Bn17hshxHzaeczm6GY.JPAI0rkhYr6WwxaWMolT01_YcWlDyiRwkMugzqKYIw5JQrQmehCoadDX';
+var clientId = 'ADD-YOUR-CONSUMER-KEY-HERE';
 var redirectUri = 'https://sfdcmobiledemo.herokuapp.com/#home';
 var proxyUrl = 'https://sfdcmobiledemo.herokuapp.com/proxy.php';
 
