@@ -1,0 +1,24 @@
+http://www.hurl.it/
+
+GET
+
+	https://servicetickets-developer-edition.na15.force.com/services/apexrest/ServiceTicket
+
+POST
+
+	https://servicetickets-developer-edition.na15.force.com/services/apexrest/ServiceTicket
+
+	{
+		"Description":"Description1",
+		"FirstName":"FirstName1",
+		"LastName":"LastName1",
+		"ProviderType":"ProviderType1",
+		"ServiceLocation":"ServiceLocation1",
+		"ServiceWindow":"ServiceWindow1"
+	}
+
+	Content-Type : application/json; charset=UTF-8
+
+PUT
+
+DELETE

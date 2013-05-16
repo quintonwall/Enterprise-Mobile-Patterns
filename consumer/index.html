@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Cloud Cable</title>
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="">
+
+    <!-- iPhone SPLASHSCREEN-->
+    <link href="apple-touch-startup-image-320x460.png" media="(device-width: 320px)" rel="apple-touch-startup-image">
+
+    <!-- iPad SPLASHSCREEN (non-Retina) (Portrait) -->
+    <link href="apple-touch-startup-image-768x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" rel="apple-touch-startup-image" />
+
+    <!-- iPad SPLASHSCREEN (non-Retina) (Landscape) -->
+    <link href="apple-touch-startup-image-1024x748.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" rel="apple-touch-startup-image" />
+
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link href="css/ratchet.css" rel="stylesheet" />
+    <link href="css/junior.css" rel="stylesheet" />
+    <link href="css/add2home.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body>
+
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div id="fb-root"></div>
+
+    <div class="header-container">
+        <div style="width: 92%; padding-left: 4%; padding-right: 4%;padding-top: 5px;">
+            <span style="font-size: 19px; text-shadow: 1px 3px 3px #000000;">Cloud Cable</span>
+        </div>
+    </div>
+    <div id="content">
+        <div class="main-container">
+            <div id="app-container" style="overflow-x: scroll; top: 45px; padding-bottom: 30px; margin-top: 20px; margin-bottom: 30px;">
+                <div id="app-main"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-container">
+        <div style="width: 92%; padding-left: 4%; padding-right: 4%;">
+            <div style="float: right;" id="logoFooter">
+                <img src="logo.png" />
+            </div>
+        </div>
+    </div>
+
+    <script type="text/template" id="appts-Template">
+        <%if(userName){ %>
+            <div class="centered" style="margin: 10px auto;">
+                <p style="text-align: center;" id="msgWelcome">        
+                    <b>Hello <%- userName  %>! Welcome to Cloud Cable.</b>        
+                </p>
+            </div>
+        <%}%>
+        <div class="centered" style="margin: 10px auto;">
+            <article>
+                <div class="button-main button-block" id="btnAddAppointment" style="margin-left: 50px; margin-right: 50px;">Create new Appointment</div>
+            </article>
+            <%if(appts.length > 0){ %>
+                <article>
+                    <p style="text-align: center;" id="apptsHeading"><b>Your list of Appointments.</b></p>
+                    <ul class="list inset" id="appt-list">
+                    <% _.forEach(appts, function(appt) { %>
+                        <li>
+                            <div>
+                            <div style="width: 80%; line-height: 20px;">
+                                <%- appt.Problem_Description__c %><br />
+                                <small><%- appt.Requested_Appointment_Date__c %> <%- appt.Requested_Appointment_Time_Hour__c %></small>
+                            </div>
+                            <% if (appt.status__c == 'SUBMITTED') { %>
+                                <div>
+                                    <span class="count count-custom" style="margin-top: -25px;">
+                                        <div><%- appt.status__c %></div>
+                                        <div class="button-main btnUpdateAppt" style="padding: 3px;" data-apptId="<%= appt.Id %>">Update</div>
+                                    </span>
+                                </div>
+                            <% } else { %>
+                                <span class="count"><%- appt.status__c %></span>
+                            <% } %>
+                        </div>
+                    </li>
+                    <% }); %>
+                    </ul>
+                </article>
+            <%}%>
+        </div>
+    </script>
+
+    <script type="text/template" id="viewAppt-Template">
+        <div class="centered" style="margin: 10px auto;">
+        <article>
+        <div>
+            <p style="text-align: center;"><b>Appointment details.</b></p>
+            <form>
+                <p class="label-heading">Problem description</p>
+                <div class="input-group">
+                    <div class="input-row">
+                        <label style="width: 95%;font-weight: normal"><%- Problem_Description__c %></label>
+                    </div>
+                </div>
+                <p class="label-heading">Address</p>
+                <div class="input-group">
+                    <div class="input-row">
+                        <label>Street</label>
+                        <label style="width: 65%;font-weight: normal"><%- Street_Address__c %></label>
+                    </div>
+                    <div class="input-row">
+                        <label>City</label>
+                        <label style="width: 65%;font-weight: normal"><%- City_Address__c %></label>
+                    </div>
+                    <div class="input-row">
+                        <label>State</label>
+                        <label style="width: 65%;font-weight: normal"><%- State_Address__c %></label>
+                    </div>
+                    <div class="input-row">
+                        <label>Zip Code</label>
+                        <label style="width: 65%;font-weight: normal"><%- Zip_Address__c %></label>
+                    </div>
+                </div>
+                <p class="label-heading">Requested Appointment Date</p>
+                <div class="input-group">
+                    <input type="date" id="txtDateUpdate" value="<%- Requested_Appointment_Date__c %>" />
+                </div>
+                <p class="label-heading">Requested Appointment Time</p>
+                <div>
+                    <select id="selectTimeUpdate">
+                        <option value="09:00 AM" <%if(Requested_Appointment_Time_Hour__c == "09:00 AM"){ %> selected <% } %>>09:00 AM</option>
+                        <option value="10:00 AM" <%if(Requested_Appointment_Time_Hour__c == "10:00 AM"){ %> selected <% } %>>10:00 AM</option>
+                        <option value="11:00 AM" <%if(Requested_Appointment_Time_Hour__c == "11:00 AM"){ %> selected <% } %>>11:00 AM</option>
+                        <option value="12:00 PM" <%if(Requested_Appointment_Time_Hour__c == "12:00 PM"){ %> selected <% } %>>12:00 PM</option>
+                        <option value="01:00 PM" <%if(Requested_Appointment_Time_Hour__c == "01:00 PM"){ %> selected <% } %>>01:00 PM</option>
+                        <option value="02:00 PM" <%if(Requested_Appointment_Time_Hour__c == "02:00 PM"){ %> selected <% } %>>02:00 PM</option>
+                        <option value="03:00 PM" <%if(Requested_Appointment_Time_Hour__c == "03:00 PM"){ %> selected <% } %>>03:00 PM</option>
+                        <option value="04:00 PM" <%if(Requested_Appointment_Time_Hour__c == "04:00 PM"){ %> selected <% } %>>04:00 PM</option>
+                        <option value="05:00 PM" <%if(Requested_Appointment_Time_Hour__c == "05:00 PM"){ %> selected <% } %>>05:00 PM</option>
+                        <option value="06:00 PM" <%if(Requested_Appointment_Time_Hour__c == "06:00 PM"){ %> selected <% } %>>06:00 PM</option>
+                    </select>
+                </div>
+            </form>
+            <p style="text-align: center;color:#D14"><span id="errMsg"></span></p>
+            <div class="button-main button-block" id="btnUpdateAppt" data-apptid="<%- Id %>">Update</div>
+            <div class="button button-block" id="btnCancelUpdate">Cancel</div>
+        </div>
+        </article>
+    </div>
+</script>
+    <script src="js/plugins.js"></script>
+    <script src="lib/javascripts/zepto.min.js"></script>
+    <script src="lib/javascripts/lodash.min.js"></script>
+    <script src="lib/javascripts/backbone-min.js"></script>
+    <script type="text/javascript" src="scripts/forcetk.js"></script>
+    <script src="src/javascripts/junior.js"></script>
+
+    <script src="lib/javascripts/add2home.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+        (function (d, t) {
+            var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s);
+        }(document, 'script'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿<div class="centered" style="margin: 10px auto;">
+    <article>
+        <div>
+            <p style="text-align: center;"><b>Please provide the following details.</b></p>
+            <form>
+                <p class="label-heading">Problem description</p>
+                <div>
+                    <textarea rows="4" id="txtProblem"></textarea>
+                </div>
+                <p class="label-heading">Address</p>
+                <div class="input-group">
+                    <div class="input-row">
+                        <label>Street</label>
+                        <input type="text" id="txtStreet" placeholder="Street">
+                    </div>
+                    <div class="input-row">
+                        <label>City</label>
+                        <input type="text" id="txtCity" placeholder="City">
+                    </div>
+                    <div class="input-row">
+                        <label>State</label>
+                        <input type="text" id="txtState" placeholder="State">
+                    </div>
+                    <div class="input-row">
+                        <label>Zip Code</label>
+                        <input type="text" id="txtZip" placeholder="Zip Code">
+                    </div>
+                </div>
+                <p class="label-heading">Requested Appointment Date</p>
+                <div class="input-group">
+                    <input type="date" id="txtDate" />
+                </div>
+                <p class="label-heading">Requested Appointment Time</p>
+                <div>
+                    <select id="selectTime">
+                        <option value="09:00 AM">09:00 AM</option>
+                        <option value="10:00 AM">10:00 AM</option>
+                        <option value="11:00 AM">11:00 AM</option>
+                        <option value="12:00 PM">12:00 PM</option>
+                        <option value="01:00 PM">01:00 PM</option>
+                        <option value="02:00 PM">02:00 PM</option>
+                        <option value="03:00 PM">03:00 PM</option>
+                        <option value="04:00 PM">04:00 PM</option>
+                        <option value="05:00 PM">05:00 PM</option>
+                        <option value="06:00 PM">06:00 PM</option>
+                    </select>
+                </div>
+            </form>
+            <p style="text-align: center;color:#D14"><span id="errMsg"></span></p>
+            <div class="button-main button-block" id="btnAppointmentDetailsContinue">Continue</div>
+            <div class="button button-block" id="btnAppointmentDetailsCancel">Cancel</div>
+        </div>
+    </article>
+</div>
+
+

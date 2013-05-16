@@ -1,0 +1,584 @@
+<apex:page docType="html-5.0" standardStylesheets="false" showHeader="false" sidebar="false">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <title>Appointments in Backbone.js</title>
+
+  <!-- ========= -->
+  <!--    CSS    -->
+  <!-- ========= -->
+    <link href="{!URLFOR($Resource.resources, 'css/bootstrap.css')}" rel="stylesheet" />
+    <style type="text/css">
+    #content ul {
+      list-style-type: none; /* Hides bullet points from appointments list */
+    }
+    .nav-list > li > a:hover {
+      background-color: yellow;
+    }
+    
+    table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 100%;    
+}
+<!--
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc; 
+    -moz-box-shadow: 0 1px 1px #ccc; 
+    box-shadow: 0 1px 1px #ccc;         
+}
+
+.btnbar-home {
+ background-image:url('{!$Resource.homeicon}');
+  background-repeat:no-repeat;
+  background-position:left top;
+  background-size:60px 60px;
+}
+
+body {
+  background-image:url('{!URLFOR($Resource.cloudstyle, 'cloudstyle/CloudCable_logo.png')}');
+  background-repeat:no-repeat;
+  background-position:left top;
+  background-size:180px 150px;
+  
+}
+-->
+.bordered tr:hover {
+    background: #fbf8e9;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+    
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;    
+}
+
+.bordered th {
+    background-color: #dce9f9;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+    background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
+    background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
+}
+
+.bordered td:first-child, .bordered th:first-child {
+    border-left: none;
+}
+
+.bordered th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.bordered th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.bordered th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.bordered tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.bordered tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+.labelt {
+    text-align: right;
+    width: 50px;
+    margin-right: 30px;
+    font-size: 18px;
+    font-weight:bold;
+}
+.problembox {
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.btnw {
+ width: 80%;
+}
+
+div[id^=map-canvas], 
+div[id^=map-canvas] div {overflow: visible;}
+
+    </style> 
+
+    <link href="{!URLFOR($Resource.cloudstyle, 'cloudstyle/css/main2.css')}" rel="stylesheet" />
+    <link href="{!URLFOR($Resource.resources, 'css/bootstrap-responsive.css')}" rel="stylesheet" />
+</head>
+<body>
+<div id="buttonbar">
+  <a href="#"><img src="{!$Resource.homeicon}" width="30" height="30"/></a>
+   <a href="javascript:goBack();"><img src="{!$Resource.backicon}" width="25" height="25"/></a>
+</div>
+
+ 
+
+  <!-- ========= -->
+  <!-- HTML CODE -->
+  <!-- ========= -->
+  <div class="container">
+    <div class="row-fluid">
+        <div id="content" class="span12>">
+            <img src="{!URLFOR($Resource.cloudstyle, 'cloudstyle/CloudCable_logo.png')}" />
+          <h2>Loading my appointments</h2>
+        </div>
+    </div>
+  </div>
+
+  <!-- ========= -->
+  <!-- Templates -->
+  <!-- ========= -->
+  <script type="text/template" id="appointments-template">
+    <div id="header">
+     <!--  <h1>Cloud Cable</h1> -->
+       <img src="{!URLFOR($Resource.cloudstyle, 'cloudstyle/CloudCable_logo.png')}" /><br/>
+      <!-- input id="new-appointment" placeholder="New appointment name" autofocus="true" / -->
+      </p>
+      <p>Your current appointments</p>
+    </div>
+    <div id="main">
+      <table>
+    <table class="bordered" id="appointment-list">
+    
+     </table>
+<!--      
+<ul class="nav nav-list" id="appointment-list">
+      </ul>
+-->
+    </div>
+  </script>
+
+  <script type="text/template" id="appointment-template">
+    <% if (typeof Id !== 'undefined') { %>
+    <td>
+      <a href="#/<%= Id %>"><%- Name %></a>
+    </td>
+    <td>
+        <%- Requested_Appointment_Date__c %> at <%- Requested_Appointment_Time_Hour__c %>
+    </td>
+    <td>
+        <%- status__c %>
+    </td>
+    <% } else { %>
+      <%- Name %>
+    <% } %>
+  </script>
+  
+  <!--
+  ---------------------------
+  APPOINTMENT DETAILS VIEW  
+  ---------------------------
+  -->
+
+  <script type="text/template" id="appointment-detail-template">
+    <div class="appointment-edit-view">
+      <div>
+      <form>
+        <fieldset>
+          
+          <img src="{!URLFOR($Resource.cloudstyle, 'cloudstyle/CloudCable_logo.png')}" /><br/>
+          <br/>
+       
+                <!-- ********************************** -->
+                <!-- DEMO STEP 1 -->
+                <!-- ********************************** -->
+                <!-- START: uncomment out the following line -->
+<!--
+                <%  if ( VIP__c) { %>
+                        <center><img id="vipstatus" src="{!$Resource.vipbadge}" width="120" height="80"/></center><br/>
+                <% } %>
+-->
+            <!-- END: uncomment out the preceeding line -->
+        <table>
+            <tr>
+                <td class="labelt">Id:</td>
+                <td><%- Name %></td>
+            </tr>
+            <tr>
+                <td class="labelt">Customer:</td>
+                <td><%- Contact_Name__r.Name %></td>
+            </tr>
+            <tr>
+                <td class="labelt">Date:</td>
+                <td><%- Requested_Appointment_Date__c %> at <%- Requested_Appointment_Time_Hour__c %></td>
+            </tr>
+            <tr >
+                <td colspan="2" class="form-actions"><%- Problem_Description__c %></td>
+            </tr>
+        </table>
+            
+        
+        </fieldset>
+        <div class="form-actions">
+               <!-- ********************************** -->
+                <!-- DEMO STEP 2 -->
+                <!-- ********************************** -->
+                <!-- START: uncomment out the following line -->
+            <table>
+            <tr><td>
+                <a href="#/directions/?id=<%- Id %>&lat=<%-Service_Address_Geo__Latitude__s %>&lng=<%- Service_Address_Geo__Longitude__s %>" class="btn btn-primary btnw">Get Directions</a>
+            </td></tr>
+           <tr><td><a href="#" class="btn btn-primary btnw save">Finalize</a></td></tr>
+            <tr><td><a href="#" class="btn btn-primary btnw save">Save</a></td></tr>
+            <tr><td><a href="#" onclick="deleteNotif();" class="btn btnw">Delete</a></td></tr>
+            <table>        
+        </div>
+      </form>
+      </div>
+    </div>
+  </script>
+
+    
+            
+   <script type="text/template" id="appointment-directions-template">
+
+        
+   </script>
+<div id="map-canvas" style="width: 280px; height: 470px;" >
+                
+</div>
+        
+
+  <!-- ========= -->
+  <!-- Libraries -->
+  <!-- ========= -->
+  <script src="{!URLFOR($Resource.resources, 'lib/jquery.min.js')}" type="text/javascript"></script>
+  <script src="{!URLFOR($Resource.resources, 'lib/underscore-min.js')}" type="text/javascript"></script>
+  <script src="{!URLFOR($Resource.resources, 'lib/backbone.js')}" type="text/javascript"></script>
+  <script src="{!URLFOR($Resource.resources, 'lib/forcetk.js')}" type="text/javascript"></script>
+  <script src="{!URLFOR($Resource.resources, 'lib/backbone.force.js')}" type="text/javascript"></script>
+  <script src="{!URLFOR($Resource.resources, 'lib/bootstrap.min.js')}" type="text/javascript"></script>
+  <!--  script src="{!$Resource.pushnotifications}" type="text/javascript"></script -->
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+
+  <!-- =============== -->
+  <!-- Javascript code -->
+  <!-- =============== -->
+    
+  
+    
+  <script type="text/javascript">
+  
+  
+    // Get an instance of the REST API client and set the session ID
+    var client = new forcetk.Client();
+    client.setSessionToken('{!$Api.Session_ID}');
+    var currUserId = '{!$User.Id}';
+ 
+
+    $(document).ready(function() {
+      myapp();
+    });
+
+    function myapp() {
+      Backbone.Force.initialize(client);
+
+      var app = {}; // create namespace for our app
+
+      //--------------
+      // Models
+      //--------------
+      app.Appointment = Backbone.Force.Model.extend({
+        type:'Appointment__c',
+        fields:['Id', 'Name', 'Street_Address__c', 'Contact_Name__r.Name', 'VIP__c', 'Problem_Description__c', 'Service_Address_Geo__Latitude__s', 'status__c', 'Service_Address_Geo__Longitude__s', 'Requested_Appointment_Date__c', 'Requested_Appointment_Time_Hour__c' ]
+      });
+
+      //--------------
+      // Collections
+      //--------------
+      //fetch a list of appointments assigned to the current field tech
+      app.AppointmentsCollection = Backbone.Force.Collection.extend({
+        model: app.Appointment,
+        query: "WHERE Field_Technician__c = '{!$User.Id}'"
+      }),
+
+      //--------------
+      // Views
+      //--------------
+
+      // renders individual Appointment table  row elements (tr)
+      app.AppointmentView = Backbone.View.extend({
+        tagName: 'tr',
+        template: _.template($('#appointment-template').html()),
+        render: function(){
+          this.$el.html(this.template(this.model.toJSON()));
+          return this; // enable chained calls
+        },
+        initialize: function(){
+
+        }
+      });
+      
+      // renders individual Appointment for editing
+      app.AppointmentDetailView = Backbone.View.extend({
+        template: _.template($('#appointment-detail-template').html()),
+        render: function(){
+          this.$el.html(this.template(this.model.toJSON()));
+          var _this = this;
+          return this; // enable chained calls
+        },
+        initialize: function(){
+          this.model.on('destroy', this.remove, this);
+         
+          this.render();
+          
+        },
+        events: {
+          'change' : 'change',
+          'click .save' : 'save',
+          'click .directions': 'directions',
+          'click .destroy': 'destroy'
+          
+        },
+        change: function (event) {
+            // Apply the change to the model
+            var target = event.target;
+            var change = {};
+            change[target.name] = target.value;
+            this.model.set(change);
+        },
+        save: function(){
+          this.model.save(null, {
+              success: function(model) {
+                app.router.navigate('/', true);
+              },
+              error: function () {
+                alert('Error saving');
+              }
+            });
+        },
+        directions: function(){
+                alert('pressed');
+                app.router.navigate('directions', true);
+            
+        },
+        destroy: function(){
+          this.model.destroy({
+            success: function() {
+              app.router.navigate('/', true);              
+            },
+              error: function () {
+                alert('Error deleting');
+              }
+          });
+        }
+      });
+
+      // renders the full list of Appointments calling AppointmentView for each one.
+      app.AppointmentsView = Backbone.View.extend({
+        template: _.template($('#appointments-template').html()),
+        initialize: function() {
+          this.render();
+          this.input = this.$('#new-appointment');
+          this.model.on('add', this.render, this);
+          this.model.on('reset', this.render, this);
+        },
+        events: {
+          'keypress #new-appointment': 'createAppointmentOnEnter'
+        },
+        createAppointmentOnEnter: function(e){
+          if ( e.which !== 13 || !this.input.val().trim() ) { // ENTER_KEY = 13
+            return;
+          }
+          // Wait for the server response so we have the Id with which to render 
+          // the new Appointment
+          this.model.create(this.newAttributes(), {wait: true});
+          this.input.val(''); // clean input box
+        },
+        renderOne: function(appointment){
+          var view = new app.AppointmentView({model: appointment});
+          this.$('#appointment-list').append('<thead><tr><th>Apt.</th><th>Date</th><th>Status</th></tr></thead>').append(view.render().el);
+        },
+        render: function(){
+          this.$el.html(this.template());
+          this.$('#appointment-list').html('');
+          for (var i = 0, l = this.model.models.length; i < l; i++) {
+            this.renderOne(this.model.models[i]);
+          }
+        },
+        newAttributes: function(){
+          return {
+            Name: this.input.val().trim()
+          }
+        }
+      });
+      
+
+      //renders the directions of current location to  appointment.
+      app.DirectionsView = Backbone.View.extend({
+        initialize: function(){
+        
+        //get our current location, default to salesforce HQ if geo not supported
+        //RSC var from       = '1 Market St, San Francisco, CA 94105';
+        var from = '2301 S Lake Shore Dr, Chicago, IL 60616';
+        
+        if (navigator.geolocation)
+        {
+            var pos = navigator.geolocation.getCurrentPosition(localGeoSuccess, localGeoError);
+        }
+            this.render();
+        }   
+});
+
+  //handle success failure of local device geo request
+  function localGeoSuccess(position)
+  {
+        
+      var geocoder = new google.maps.Geocoder();
+        var map      = new google.maps.Map(document.getElementById('map-canvas'), {
+          zoom: 8, mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        
+        //Workds with SATELITTE or HYBRID map types
+        //map.setTilt(45);
+        
+        var directionsService = new google.maps.DirectionsService();
+        var directionsDisplay = new google.maps.DirectionsRenderer();
+
+        directionsDisplay.setMap(map);
+        
+ 
+        //our current location 
+        var start = position.coords.latitude+","+position.coords.longitude;
+        //the appointment geo from query params
+        var end =   getUrlVars()["lat"]+","+getUrlVars()["lng"];
+
+        var request = {
+          origin: start,
+          destination: end,
+          travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+
+        directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+           directionsDisplay.setDirections(response);
+          }
+        });
+        document.getElementById('map-canvas').style.visibility = 'visible';
+  }
+  
+  function localGeoError(error)
+  {
+      switch(error.code) 
+        {
+        case error.PERMISSION_DENIED:
+         alert('User denied the request for Geolocation.');
+          break;
+        case error.POSITION_UNAVAILABLE:
+           alert('Location information is unavailable.');
+          break;
+        case error.TIMEOUT:
+          alert('The request to get user location timed out.');
+          break;
+        case error.UNKNOWN_ERROR:
+           alert('An unknown error occurred.');
+          break;
+        }
+    }
+
+      //Define the Application Router
+      app.Router = Backbone.Router.extend({ 
+        routes: {
+          "": "appointments",
+          ":id": "appointment",
+          "directions/:geo" : "directions"
+        },          
+        appointments: function() {
+          var appointmentsCollection = new app.AppointmentsCollection();
+          appointmentsCollection.fetch({success: function(){
+            $("#content").html(new app.AppointmentsView({model: appointmentsCollection}).el);
+          }});
+        },
+        appointment: function(id) {
+          var appointment = new app.Appointment({Id: id});
+          appointment.fetch({success: function(){
+            $("#content").html(new app.AppointmentDetailView({model: appointment}).el);
+          }});
+        },
+        directions: function(geo) {
+            var directions = new app.Appointment({Id: geo});
+            directions.fetch({success: function(){          
+          $("#content").html(new app.DirectionsView({Geo: geo}).el);
+         }});
+        }
+      });
+
+      app.router = new app.Router();
+      Backbone.history.start();
+
+    }
+    
+    function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+    //need to make sure we clear out the map div if we go back
+    function goBack()
+    {
+        document.getElementById('map-canvas').innerHTML = "";
+        document.getElementById('map-canvas').style.visibility = 'hidden';
+        window.history.back();
+    } 
+    
+    
+    //Temp mock up notification
+    //make sure notification center settings are set to alerts to match the confirmation dialog
+    function deleteNotif()
+    {
+        confirm('An appointment has changed');
+    }
+    
+    
+    function isVip(vip)
+    {
+        alert(vip);
+        if ( vip=="true") { 
+            document.getElementById('vipstatus').style.visibility = 'visible'; 
+        }
+        else {  
+            document.getElementById('vipstatus').style.visibility = 'hidden'; 
+        }
+         
+    }
+  </script>
+  
+  
+  
+
+</body>
+</apex:page>

@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script type="text/javascript" src="scripts/forcetk.js"></script>
+		<script>
+		    // OAuth Configuration
+		    var loginUrl = 'https://cloudcable.secure.force.com/';
+		    var clientId = '3MVG9A2kN3Bn17hshxHzaeczm6GY.JPAI0rkhYr6WwxaWMolT01_YcWlDyiRwkMugzqKYIw5JQrQmehCoadDX';
+		    var redirectUri = 'https://sfdcmobiledemo.herokuapp.com/';
+		    var proxyUrl = 'https://sfdcmobiledemo.herokuapp.com/proxy.php';
+
+		    var client = new forcetk.Client(clientId, loginUrl, proxyUrl);
+		    var userId = '';
+
+		    function getAuthorizeUrl(loginUrl, clientId, redirectUri) {
+		        return loginUrl + 'services/oauth2/authorize?display=popup'
+                    + '&response_type=token&client_id=' + escape(clientId)
+                    + '&redirect_uri=' + escape(redirectUri);
+		    }
+
+		    function sessionCallback(oauthResponse) {
+		        if (typeof oauthResponse === 'undefined'
+                    || typeof oauthResponse['access_token'] === 'undefined') {
+		            console.log("No OAuth response");
+		        } else {
+		            client.setSessionToken(oauthResponse.access_token, 'v27.0', oauthResponse.instance_url);
+
+		            var parts = oauthResponse['id'].split('/');
+		            userId = parts[parts.length - 1];
+
+		            //we need the user's name and email (from Facebook) 
+		            client.retrieve('User', userId, 'Email,Name',
+                        function (response) {
+                            console.log(response);
+                        },
+                        function (jqXHR) {
+                            console.log(jqXHR);
+                        });
+		        }
+
+		        getAppointments();
+		    }
+
+		    function onloadCallback() {
+		        var oauthResponse = {};
+
+		        if (window.location.hash) {
+		            var message = window.location.hash.substr(1);
+		            var nvps = message.split('&');
+		            for (var nvp in nvps) {
+		                var parts = nvps[nvp].split('=');
+		                oauthResponse[parts[0]] = unescape(parts[1]);
+		            }
+		            sessionCallback(oauthResponse);
+		        } else {
+		            if (document.referrer == "https://cloudcable.secure.force.com/apex/SiteHome") {
+		                window.location = getAuthorizeUrl(loginUrl, clientId, redirectUri);
+		            }
+		        }
+		    }
+
+		    function getAppointments() {
+		        var query = "SELECT City_Address__c,Contact_Name__c,CreatedDate,Id,Name,Problem_Description__c,Requested_Appointment_Date__c,Requested_Appointment_Time_Hour__c,State_Address__c,status__c,Street_Address__c,Zip_Address__c FROM Appointment__c WHERE IsDeleted = false";
+
+		        client.query(query,
+                    function (response) {
+                        console.log(response);
+                    },
+                    function (jqXHR) {
+                        console.log(jqXHR);
+                    });
+		    }
+
+		    function createAppointment() {
+		        //clientId is retrieved on login from the user.
+		        var appointment = {
+		            "City_Address__c": "240",
+		            "Contact_Name__c": userId,
+		            "Problem_Description__c": "via Heroku",
+		            "Requested_Appointment_Date__c": "2013-04-02",
+		            "Requested_Appointment_Time_Hour__c": "10:00 AM",
+		            "State_Address__c": "CA",
+		            "Street_Address__c": "333 harrison st",
+		            "Zip_Address__c": "94105"
+		        };
+
+		        client.create('Appointment__c', appointment, function (data) { console.log(data); }, function (error) { console.log(error); });
+		    }
+
+		    function updateAppointment(id) {
+		        //this uses PATCH under covers
+		        var update = {
+		            "Requested_Appointment_Date__c": "2013-04-02",
+		            "Requested_Appointment_Time_Hour__c": "12:00 AM"
+		        };
+
+		        client.update('Appointment__c', id, update, function (data) { console.log(data); }, function (error) { console.log(error); })
+		    }
+
+		    $(document).ready(function () {
+		        //$('#ssoLink').attr('href', getAuthorizeUrl(loginUrl, clientId, redirectUri));
+		        onloadCallback();
+		    });
+
+		</script>
+        <div class="header-container">
+            <header class="wrapper clearfix">
+                <h1 class="title">SalesForce Mobile Web Demo</h1>
+                <nav>
+                    <ul>
+                        <li><a href="https://login.salesforce.com/services/auth/sso/00Di0000000JUGMEA4/CloudCable?site=https%3A%2F%2Fcloudcable.secure.force.com%2F">Login</a></li>
+                        <li><a href="https://github.com/AditiTechnologies/SFDC-Mobile-ServiceTickets" target="_blank">Get Source</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+
+                <article>
+                    <header>
+                        <h1>Welcome to the mobile web for SalesForce developers!</h1>
+                        <p>To get started, click the "Get Started" button</p>
+                    </header>
+                    <section>
+                    	<!--<a id="ssoLink">Login</a>
+                        <br/>-->
+                        <button onclick='createAppointment()'>Create Appointment</button>
+                        <br/>
+                        <button onclick="updateAppointment('a06i0000000aVGaAAM')"> Update </button>
+
+                   	</section>
+                </article>
+
+                <aside>
+                    <h3>Download this Demo</h3>
+                    <p>You can get the all the source code to this demo from <a href="https://github.com/AditiTechnologies/SFDC-Mobile-ServiceTickets">Github</a>.</p>
+                </aside>
+
+            </div> <!-- #main -->
+        </div> <!-- #main-container -->
+
+        <div class="footer-container">
+            <footer class="wrapper">
+                <h4>written by Aditi Technologies</h4>
+            </footer>
+        </div>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <script>
+            var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+            (function (d, t) {
+                var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+                g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+                s.parentNode.insertBefore(g, s)
+            }(document, 'script'));
+        </script>
+    </body>
+</html>

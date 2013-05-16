@@ -1,0 +1,53 @@
+@RestResource(urlMapping='/ServiceTicket/*')
+global class ServiceTicketController {
+
+    @HttpGet
+    global static List<ServiceTicket__c> getServiceTickets() {
+        List<ServiceTicket__c> ServiceTickets = [SELECT ID, Name, Description__c, FirstName__c, LastName__c, ProviderType__c, ServiceLocation__c, ServiceWindow__c from ServiceTicket__c];
+        return ServiceTickets;
+    }
+
+    @HttpPost 
+    global static String createNewServiceTicket(String Description, String FirstName, String LastName, String ProviderType, String ServiceLocation, String ServiceWindow) {
+        
+        ServiceTicket__c s = new ServiceTicket__c();
+        
+        s.Description__c = Description;
+        s.FirstName__c = FirstName;
+        s.LastName__c = LastName;
+        s.ProviderType__c = ProviderType;
+        s.ServiceLocation__c = ServiceLocation;
+        s.ServiceWindow__c = ServiceWindow;
+
+        insert s;
+
+        return s.Id;
+   }
+
+    @HttpDelete
+    global static String deleteServiceTicketById() {
+        String ID = RestContext.request.params.get('ID');
+        List<ServiceTicket__c> s = [ Select ID from ServiceTicket__c where ID= :ID];
+
+        delete s;
+
+        return 'Success';
+    }
+
+    @HttpPut
+    global static String updateServiceTicket(String ID, String Description, String FirstName, String LastName, String ProviderType, String ServiceLocation, String ServiceWindow) {
+        ServiceTicket__c s = [ SELECT Description__c, FirstName__c, LastName__c, ProviderType__c, ServiceLocation__c, ServiceWindow__c from ServiceTicket__c where ID= :ID];
+
+        s.Description__c = Description;
+        s.FirstName__c = FirstName;
+        s.LastName__c = LastName;
+        s.ProviderType__c = ProviderType;
+        s.ServiceLocation__c = ServiceLocation;
+        s.ServiceWindow__c = ServiceWindow;
+
+        update s;
+
+        return 'Success';
+    }
+
+}
