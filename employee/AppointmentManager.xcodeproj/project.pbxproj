@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A8E26581705FE5D004E6693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E26571705FE5D004E6693 /* Foundation.framework */; };
+		5A8E265A1705FE5D004E6693 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E26591705FE5D004E6693 /* MessageUI.framework */; };
+		5A8E265C1705FE5D004E6693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E265B1705FE5D004E6693 /* UIKit.framework */; };
+		5A8E265E1705FE5D004E6693 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E265D1705FE5D004E6693 /* CFNetwork.framework */; };
+		5A8E26601705FE5D004E6693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E265F1705FE5D004E6693 /* CoreGraphics.framework */; };
+		5A8E26621705FE5D004E6693 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E26611705FE5D004E6693 /* CoreLocation.framework */; };
+		5A8E26641705FE5D004E6693 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E26631705FE5D004E6693 /* CoreMedia.framework */; };
+		5A8E26661705FE5D004E6693 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E26651705FE5D004E6693 /* QuartzCore.framework */; };
+		5A8E26681705FE5D004E6693 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E26671705FE5D004E6693 /* Security.framework */; };
+		5A8E266A1705FE5D004E6693 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E26691705FE5D004E6693 /* MobileCoreServices.framework */; };
+		5A8E266C1705FE5D004E6693 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E266B1705FE5D004E6693 /* AddressBook.framework */; };
+		5A8E266E1705FE5D004E6693 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E266D1705FE5D004E6693 /* AddressBookUI.framework */; };
+		5A8E26701705FE5D004E6693 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E266F1705FE5D004E6693 /* AudioToolbox.framework */; };
+		5A8E26721705FE5D004E6693 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E26711705FE5D004E6693 /* AVFoundation.framework */; };
+		5A8E26741705FE5D004E6693 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E26731705FE5D004E6693 /* MediaPlayer.framework */; };
+		5A8E26761705FE5D004E6693 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E26751705FE5D004E6693 /* SystemConfiguration.framework */; };
+		5A8E267C1705FE5D004E6693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E267A1705FE5D004E6693 /* InfoPlist.strings */; };
+		5A8E267E1705FE5D004E6693 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8E267D1705FE5D004E6693 /* main.m */; };
+		5A8E26801705FE5D004E6693 /* AppointmentManager-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E267F1705FE5D004E6693 /* AppointmentManager-Prefix.pch */; };
+		5A8E269C1705FE5F004E6693 /* SalesforceHybridSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E269B1705FE5F004E6693 /* SalesforceHybridSDK.framework */; };
+		5A8E269E1705FE5F004E6693 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8E269D1705FE5F004E6693 /* libz.dylib */; };
+		5A8E26A21705FE5F004E6693 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26A11705FE5F004E6693 /* icon-72.png */; };
+		5A8E26A41705FE5F004E6693 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26A31705FE5F004E6693 /* icon-72@2x.png */; };
+		5A8E26A61705FE5F004E6693 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26A51705FE5F004E6693 /* icon.png */; };
+		5A8E26A81705FE5F004E6693 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26A71705FE5F004E6693 /* icon@2x.png */; };
+		5A8E26AB1705FE5F004E6693 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26AA1705FE5F004E6693 /* Default-Landscape~ipad.png */; };
+		5A8E26AD1705FE5F004E6693 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26AC1705FE5F004E6693 /* Default-Landscape@2x~ipad.png */; };
+		5A8E26AF1705FE5F004E6693 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26AE1705FE5F004E6693 /* Default-Portrait~ipad.png */; };
+		5A8E26B11705FE5F004E6693 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26B01705FE5F004E6693 /* Default-Portrait@2x~ipad.png */; };
+		5A8E26B31705FE5F004E6693 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26B21705FE5F004E6693 /* Default.png */; };
+		5A8E26B51705FE5F004E6693 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26B41705FE5F004E6693 /* Default@2x.png */; };
+		5A8E26B71705FE5F004E6693 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26B61705FE5F004E6693 /* Default-568h@2x.png */; };
+		5A8E26B91705FE5F004E6693 /* Default~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26B81705FE5F004E6693 /* Default~iPad.png */; };
+		5A8E26BB1705FE5F004E6693 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26BA1705FE5F004E6693 /* readme.md */; };
+		5A8E26BF1705FE5F004E6693 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8E26BE1705FE5F004E6693 /* AppDelegate.m */; };
+		5A8E26C21705FE5F004E6693 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26C11705FE5F004E6693 /* README */; };
+		5A8E26C41705FE5F004E6693 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26C31705FE5F004E6693 /* config.xml */; };
+		5A8E26C61705FE5F004E6693 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26C51705FE5F004E6693 /* Settings.bundle */; };
+		5A8E26C81705FE5F004E6693 /* CordovaResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26C71705FE5F004E6693 /* CordovaResources.bundle */; };
+		5A8E26CA1705FE5F004E6693 /* SalesforceSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26C91705FE5F004E6693 /* SalesforceSDKResources.bundle */; };
+		5A8E26D11705FF9E004E6693 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 5A8E26D01705FF9E004E6693 /* www */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5A8E26521705FE5D004E6693 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = www;
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5A8E26541705FE5D004E6693 /* AppointmentManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppointmentManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A8E26571705FE5D004E6693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5A8E26591705FE5D004E6693 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5A8E265B1705FE5D004E6693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5A8E265D1705FE5D004E6693 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5A8E265F1705FE5D004E6693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5A8E26611705FE5D004E6693 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5A8E26631705FE5D004E6693 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		5A8E26651705FE5D004E6693 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5A8E26671705FE5D004E6693 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5A8E26691705FE5D004E6693 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5A8E266B1705FE5D004E6693 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		5A8E266D1705FE5D004E6693 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		5A8E266F1705FE5D004E6693 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5A8E26711705FE5D004E6693 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5A8E26731705FE5D004E6693 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		5A8E26751705FE5D004E6693 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5A8E26791705FE5D004E6693 /* AppointmentManager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppointmentManager-Info.plist"; sourceTree = "<group>"; };
+		5A8E267B1705FE5D004E6693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5A8E267D1705FE5D004E6693 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5A8E267F1705FE5D004E6693 /* AppointmentManager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppointmentManager-Prefix.pch"; sourceTree = "<group>"; };
+		5A8E269B1705FE5F004E6693 /* SalesforceHybridSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SalesforceHybridSDK.framework; sourceTree = "<group>"; };
+		5A8E269D1705FE5F004E6693 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = /usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		5A8E26A11705FE5F004E6693 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "Resources/icons/icon-72.png"; sourceTree = "<group>"; };
+		5A8E26A31705FE5F004E6693 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72@2x.png"; path = "Resources/icons/icon-72@2x.png"; sourceTree = "<group>"; };
+		5A8E26A51705FE5F004E6693 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Resources/icons/icon.png; sourceTree = "<group>"; };
+		5A8E26A71705FE5F004E6693 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Resources/icons/icon@2x.png"; sourceTree = "<group>"; };
+		5A8E26AA1705FE5F004E6693 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/splash/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		5A8E26AC1705FE5F004E6693 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "Resources/splash/Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		5A8E26AE1705FE5F004E6693 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "Resources/splash/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		5A8E26B01705FE5F004E6693 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "Resources/splash/Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		5A8E26B21705FE5F004E6693 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/splash/Default.png; sourceTree = "<group>"; };
+		5A8E26B41705FE5F004E6693 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/splash/Default@2x.png"; sourceTree = "<group>"; };
+		5A8E26B61705FE5F004E6693 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/splash/Default-568h@2x.png"; sourceTree = "<group>"; };
+		5A8E26B81705FE5F004E6693 /* Default~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~iPad.png"; path = "Resources/splash/Default~iPad.png"; sourceTree = "<group>"; };
+		5A8E26BA1705FE5F004E6693 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
+		5A8E26BD1705FE5F004E6693 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
+		5A8E26BE1705FE5F004E6693 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
+		5A8E26C11705FE5F004E6693 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
+		5A8E26C31705FE5F004E6693 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
+		5A8E26C51705FE5F004E6693 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		5A8E26C71705FE5F004E6693 /* CordovaResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CordovaResources.bundle; sourceTree = "<group>"; };
+		5A8E26C91705FE5F004E6693 /* SalesforceSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SalesforceSDKResources.bundle; sourceTree = "<group>"; };
+		5A8E26D01705FF9E004E6693 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = AppointmentManager/www; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A8E264F1705FE5D004E6693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A8E26581705FE5D004E6693 /* Foundation.framework in Frameworks */,
+				5A8E265A1705FE5D004E6693 /* MessageUI.framework in Frameworks */,
+				5A8E265C1705FE5D004E6693 /* UIKit.framework in Frameworks */,
+				5A8E265E1705FE5D004E6693 /* CFNetwork.framework in Frameworks */,
+				5A8E26601705FE5D004E6693 /* CoreGraphics.framework in Frameworks */,
+				5A8E26621705FE5D004E6693 /* CoreLocation.framework in Frameworks */,
+				5A8E26641705FE5D004E6693 /* CoreMedia.framework in Frameworks */,
+				5A8E26661705FE5D004E6693 /* QuartzCore.framework in Frameworks */,
+				5A8E26681705FE5D004E6693 /* Security.framework in Frameworks */,
+				5A8E266A1705FE5D004E6693 /* MobileCoreServices.framework in Frameworks */,
+				5A8E266C1705FE5D004E6693 /* AddressBook.framework in Frameworks */,
+				5A8E266E1705FE5D004E6693 /* AddressBookUI.framework in Frameworks */,
+				5A8E26701705FE5D004E6693 /* AudioToolbox.framework in Frameworks */,
+				5A8E26721705FE5D004E6693 /* AVFoundation.framework in Frameworks */,
+				5A8E26741705FE5D004E6693 /* MediaPlayer.framework in Frameworks */,
+				5A8E26761705FE5D004E6693 /* SystemConfiguration.framework in Frameworks */,
+				5A8E269C1705FE5F004E6693 /* SalesforceHybridSDK.framework in Frameworks */,
+				5A8E269E1705FE5F004E6693 /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A8E26491705FE5D004E6693 = {
+			isa = PBXGroup;
+			children = (
+				5A8E26D01705FF9E004E6693 /* www */,
+				5A8E26771705FE5D004E6693 /* AppointmentManager */,
+				5A8E26561705FE5D004E6693 /* Frameworks */,
+				5A8E26551705FE5D004E6693 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5A8E26551705FE5D004E6693 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E26541705FE5D004E6693 /* AppointmentManager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A8E26561705FE5D004E6693 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E26571705FE5D004E6693 /* Foundation.framework */,
+				5A8E26591705FE5D004E6693 /* MessageUI.framework */,
+				5A8E265B1705FE5D004E6693 /* UIKit.framework */,
+				5A8E265D1705FE5D004E6693 /* CFNetwork.framework */,
+				5A8E265F1705FE5D004E6693 /* CoreGraphics.framework */,
+				5A8E26611705FE5D004E6693 /* CoreLocation.framework */,
+				5A8E26631705FE5D004E6693 /* CoreMedia.framework */,
+				5A8E26651705FE5D004E6693 /* QuartzCore.framework */,
+				5A8E26671705FE5D004E6693 /* Security.framework */,
+				5A8E26691705FE5D004E6693 /* MobileCoreServices.framework */,
+				5A8E266B1705FE5D004E6693 /* AddressBook.framework */,
+				5A8E266D1705FE5D004E6693 /* AddressBookUI.framework */,
+				5A8E266F1705FE5D004E6693 /* AudioToolbox.framework */,
+				5A8E26711705FE5D004E6693 /* AVFoundation.framework */,
+				5A8E26731705FE5D004E6693 /* MediaPlayer.framework */,
+				5A8E26751705FE5D004E6693 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A8E26771705FE5D004E6693 /* AppointmentManager */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E269B1705FE5F004E6693 /* SalesforceHybridSDK.framework */,
+				5A8E269D1705FE5F004E6693 /* libz.dylib */,
+				5A8E26BA1705FE5F004E6693 /* readme.md */,
+				5A8E26C51705FE5F004E6693 /* Settings.bundle */,
+				5A8E26C71705FE5F004E6693 /* CordovaResources.bundle */,
+				5A8E26C91705FE5F004E6693 /* SalesforceSDKResources.bundle */,
+				5A8E269F1705FE5F004E6693 /* Resources */,
+				5A8E26BC1705FE5F004E6693 /* Classes */,
+				5A8E26C01705FE5F004E6693 /* Plugins */,
+				5A8E26781705FE5D004E6693 /* Supporting Files */,
+			);
+			path = AppointmentManager;
+			sourceTree = "<group>";
+		};
+		5A8E26781705FE5D004E6693 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E26791705FE5D004E6693 /* AppointmentManager-Info.plist */,
+				5A8E267A1705FE5D004E6693 /* InfoPlist.strings */,
+				5A8E267D1705FE5D004E6693 /* main.m */,
+				5A8E267F1705FE5D004E6693 /* AppointmentManager-Prefix.pch */,
+				5A8E26C31705FE5F004E6693 /* config.xml */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A8E269F1705FE5F004E6693 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E26A01705FE5F004E6693 /* icons */,
+				5A8E26A91705FE5F004E6693 /* splash */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5A8E26A01705FE5F004E6693 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E26A11705FE5F004E6693 /* icon-72.png */,
+				5A8E26A31705FE5F004E6693 /* icon-72@2x.png */,
+				5A8E26A51705FE5F004E6693 /* icon.png */,
+				5A8E26A71705FE5F004E6693 /* icon@2x.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
+		5A8E26A91705FE5F004E6693 /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E26AA1705FE5F004E6693 /* Default-Landscape~ipad.png */,
+				5A8E26AC1705FE5F004E6693 /* Default-Landscape@2x~ipad.png */,
+				5A8E26AE1705FE5F004E6693 /* Default-Portrait~ipad.png */,
+				5A8E26B01705FE5F004E6693 /* Default-Portrait@2x~ipad.png */,
+				5A8E26B21705FE5F004E6693 /* Default.png */,
+				5A8E26B41705FE5F004E6693 /* Default@2x.png */,
+				5A8E26B61705FE5F004E6693 /* Default-568h@2x.png */,
+				5A8E26B81705FE5F004E6693 /* Default~iPad.png */,
+			);
+			name = splash;
+			sourceTree = "<group>";
+		};
+		5A8E26BC1705FE5F004E6693 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E26BD1705FE5F004E6693 /* AppDelegate.h */,
+				5A8E26BE1705FE5F004E6693 /* AppDelegate.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		5A8E26C01705FE5F004E6693 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				5A8E26C11705FE5F004E6693 /* README */,
+			);
+			name = Plugins;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A8E26531705FE5D004E6693 /* AppointmentManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A8E26CD1705FE5F004E6693 /* Build configuration list for PBXNativeTarget "AppointmentManager" */;
+			buildPhases = (
+				5A8E264E1705FE5D004E6693 /* Sources */,
+				5A8E264F1705FE5D004E6693 /* Frameworks */,
+				5A8E26501705FE5D004E6693 /* Resources */,
+				5A8E26511705FE5D004E6693 /* Sources */,
+				5A8E26521705FE5D004E6693 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppointmentManager;
+			productName = AppointmentManager;
+			productReference = 5A8E26541705FE5D004E6693 /* AppointmentManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A8E264A1705FE5D004E6693 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Quinton Wall";
+			};
+			buildConfigurationList = 5A8E264D1705FE5D004E6693 /* Build configuration list for PBXProject "AppointmentManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5A8E26491705FE5D004E6693;
+			productRefGroup = 5A8E26551705FE5D004E6693 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A8E26531705FE5D004E6693 /* AppointmentManager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A8E26501705FE5D004E6693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A8E267C1705FE5D004E6693 /* InfoPlist.strings in Resources */,
+				5A8E26801705FE5D004E6693 /* AppointmentManager-Prefix.pch in Resources */,
+				5A8E26A21705FE5F004E6693 /* icon-72.png in Resources */,
+				5A8E26A41705FE5F004E6693 /* icon-72@2x.png in Resources */,
+				5A8E26A61705FE5F004E6693 /* icon.png in Resources */,
+				5A8E26A81705FE5F004E6693 /* icon@2x.png in Resources */,
+				5A8E26AB1705FE5F004E6693 /* Default-Landscape~ipad.png in Resources */,
+				5A8E26AD1705FE5F004E6693 /* Default-Landscape@2x~ipad.png in Resources */,
+				5A8E26AF1705FE5F004E6693 /* Default-Portrait~ipad.png in Resources */,
+				5A8E26B11705FE5F004E6693 /* Default-Portrait@2x~ipad.png in Resources */,
+				5A8E26B31705FE5F004E6693 /* Default.png in Resources */,
+				5A8E26B51705FE5F004E6693 /* Default@2x.png in Resources */,
+				5A8E26B71705FE5F004E6693 /* Default-568h@2x.png in Resources */,
+				5A8E26B91705FE5F004E6693 /* Default~iPad.png in Resources */,
+				5A8E26BB1705FE5F004E6693 /* readme.md in Resources */,
+				5A8E26C21705FE5F004E6693 /* README in Resources */,
+				5A8E26C41705FE5F004E6693 /* config.xml in Resources */,
+				5A8E26C61705FE5F004E6693 /* Settings.bundle in Resources */,
+				5A8E26C81705FE5F004E6693 /* CordovaResources.bundle in Resources */,
+				5A8E26CA1705FE5F004E6693 /* SalesforceSDKResources.bundle in Resources */,
+				5A8E26D11705FF9E004E6693 /* www in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A8E264E1705FE5D004E6693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A8E267E1705FE5D004E6693 /* main.m in Sources */,
+				5A8E26BF1705FE5F004E6693 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A8E26511705FE5D004E6693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5A8E267A1705FE5D004E6693 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A8E267B1705FE5D004E6693 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5A8E26CB1705FE5F004E6693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quinton Wall (5CU6NER8T9)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(CORDOVALIB)/Classes/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PROVISIONING_PROFILE = "96118E07-0D48-4650-8A73-98B232554746";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5A8E26CC1705FE5F004E6693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quinton Wall (5CU6NER8T9)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "CORDOVA_FRAMEWORK=1";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(CORDOVALIB)/Classes/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PROVISIONING_PROFILE = "96118E07-0D48-4650-8A73-98B232554746";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A8E26CE1705FE5F004E6693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quinton Wall (5CU6NER8T9)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/AppointmentManager\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AppointmentManager/AppointmentManager-Prefix.pch";
+				INFOPLIST_FILE = "AppointmentManager/AppointmentManager-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "49B7E7D8-7C81-4DBE-B1F1-537DD9888FAB";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5A8E26CF1705FE5F004E6693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Quinton Wall (5CU6NER8T9)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/AppointmentManager\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AppointmentManager/AppointmentManager-Prefix.pch";
+				INFOPLIST_FILE = "AppointmentManager/AppointmentManager-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "49B7E7D8-7C81-4DBE-B1F1-537DD9888FAB";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A8E264D1705FE5D004E6693 /* Build configuration list for PBXProject "AppointmentManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A8E26CB1705FE5F004E6693 /* Debug */,
+				5A8E26CC1705FE5F004E6693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A8E26CD1705FE5F004E6693 /* Build configuration list for PBXNativeTarget "AppointmentManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A8E26CE1705FE5F004E6693 /* Debug */,
+				5A8E26CF1705FE5F004E6693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A8E264A1705FE5D004E6693 /* Project object */;
+}
